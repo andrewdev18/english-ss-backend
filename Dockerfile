@@ -4,7 +4,7 @@ FROM node:18-alpine
 WORKDIR /user/src
 
 COPY package*.json ./
-COPY ./src .
+COPY . .
 
 # RUN npm install -g prisma
 RUN npm install

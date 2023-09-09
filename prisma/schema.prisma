@@ -30,7 +30,7 @@ model Teacher {
 model Student {
   id      Int    @id @default(autoincrement())
   level   Int
-  classId Int?   @unique
+  classId Int?   
   class   Class? @relation(fields: [classId], references: [id])
   userId  Int    @unique
   user    User?  @relation(fields: [userId], references: [id])
