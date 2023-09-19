@@ -26,6 +26,19 @@ export class UserService {
         });
     }
 
+    async findUsername(username: string) {
+        return this.prisma.user.findFirst({
+            where: {
+                username: {
+                    equals: username
+                }
+            }, select: {
+                id: true,
+                username: true
+            }
+        });
+    }
+
     async createUser(user: User) {
         return this.prisma.user.create({
             data: {

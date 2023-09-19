@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { UserService } from './user.service';
 import { LoginInput } from './dto/user.dto';
 import { Role, Student, Teacher, User } from '@prisma/client';
@@ -28,5 +28,10 @@ export class UserController {
             }
         }
         return response;
+    }
+
+    @Get('username/:username')
+    async searchUsername(@Param('username') username: string){
+        return this.userService.findUsername(username).then();
     }
 }
