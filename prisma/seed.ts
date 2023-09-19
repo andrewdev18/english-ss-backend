@@ -24,7 +24,8 @@ async function main() {
         data: {
             id: 0,
             name: 'General Course',
-            teacherId: 0
+            teacherId: 0,
+            description: 'General Class for all English SmartSys students.'
         }
     });
 

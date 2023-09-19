@@ -14,7 +14,20 @@ export class ClassService {
             select: {
                 id: true,
                 name: true,
-                students: true,
+                description: true,
+                startingDate: true,
+                students: {
+                    select: {
+                        level: true,
+                        user: {
+                            select: {
+                                id: true,
+                                name: true,
+                                username: true
+                            }
+                        }
+                    }
+                },
                 teacher: true,
             }
         })
@@ -54,7 +67,21 @@ export class ClassService {
             select: {
                 id: true,
                 name: true,
-                students: true,
+                description: true,
+                startingDate: true,
+                // students: {
+                //     select: {
+                //         id: true,
+                //         level: true,
+                //         user: {
+                //             select: {
+                //                 id: true,
+                //                 name: true,
+                //                 username: true
+                //             }
+                //         }
+                //     }
+                // },
                 teacher: true
             }
         })
@@ -64,6 +91,7 @@ export class ClassService {
         return this.prisma.class.create({
             data: {
                 name: newclass.name,
+                description: newclass.description,
                 teacherId: newclass.teacherId
             }, select: {
                 id: true,
@@ -81,7 +109,11 @@ export class ClassService {
                 id: studentId
             }, select: {
                 id: true,
-                user: true,
+                user: {
+                    select: {
+                        name: true
+                    }
+                },
                 classId: true
             }
         })
